@@ -1,6 +1,5 @@
 package br.com.training.controller;
 
-import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import br.com.training.model.User;
-import br.com.training.repository.UserRepository;
+import br.com.training.repository.service.UserService;
 
 @RestController
 @RestControllerAdvice
@@ -25,41 +24,29 @@ import br.com.training.repository.UserRepository;
 public class UserController {
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public User createUser(@RequestBody @Valid User user) {
-		return userRepository.save(user);
+		return userService.createUser(new User(user.getName(), user.getEmail(), user.getCpf(), user.getBirthDate()));
 	}
 
 	@GetMapping(value = "/{cpf}")
 	@ResponseStatus(HttpStatus.OK)
 	public User getUser(@PathVariable String cpf) {
-		return userRepository.findByCpf(cpf);
+		return userService.findByCpf(cpf);
 	}
 
 	@PutMapping(value = "/{cpf}")
 	@ResponseStatus(HttpStatus.OK)
-	public User update(@PathVariable String cpf) {
-		User user = userRepository.findByCpf(cpf);
-		if (user == null) {
-			throw new EntityNotFoundException("User not found");
-		}
-		user.setName(user.getName());
-		user.setCpf(user.getCpf());
-		user.setEmail(user.getEmail());
-		user.setBirthDate(user.getBirthDate());
-		return userRepository.save(user);
+	public User update(@PathVariable String cpf, @RequestBody User user) {
+		 return userService.update(user, cpf);
 	}
 
 	@DeleteMapping(value = "/{cpf}")
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(@PathVariable String cpf) {
-		User user = userRepository.findByCpf(cpf);
-		if (user == null) {
-			throw new EntityNotFoundException("User not found");
-		}
-		userRepository.delete(user);
+		userService.delete(cpf);
 	}
 }

@@ -49,7 +49,6 @@ public class User implements Serializable {
 	}
 
 	public User() {
-
 	}
 
 	public User(String name, String email, String cpf, LocalDate birthDate) {
@@ -123,5 +122,4 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
-
 }
