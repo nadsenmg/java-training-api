@@ -1,6 +1,7 @@
-package br.com.training.repository.service;
+package br.com.training.service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class UserService {
 		throw new EntityNotFoundException("User not found!");
 	}
 
-	public User createUser(User user) {
+	public User createUser(@Valid User user) {
 		return userRepository.save(user);
 	}
 

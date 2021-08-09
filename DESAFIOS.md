@@ -61,7 +61,7 @@ Na primeira parte desse desafio, o objetivo vai ser de atualizar a estrutura do 
 
 ### Uso de DTO
 
-Vamos agora aplicar o conceito de DTO (Data Transfer Object) ao nosso projeto. Para não utilizar as nossas Entidades como objeto de entrada e saida do nosso projeto. Isso é geralmente considerado uma boa prática no desenvolvimento de API para evitar manipular dados desnecessarios ou retornar dados sigilosos.
+ Vamos agora aplicar o conceito de DTO (Data Transfer Object) ao nosso projeto. Para não utilizar as nossas Entidades como objeto de entrada e saida do nosso projeto. Isso é geralmente considerado uma boa prática no desenvolvimento de API para evitar manipular dados desnecessarios ou retornar dados sigilosos.
 
 Seguem algumas referências a respeito:
 
