@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import br.com.training.dto.UserDTO;
 import br.com.training.model.User;
-import br.com.training.model.dto.UserDTO;
 import br.com.training.service.UserService;
 
 @RestController

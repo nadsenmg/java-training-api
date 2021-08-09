@@ -1,4 +1,4 @@
-package br.com.training.model.dto;
+package br.com.training.dto;
 
 import java.time.LocalDate;
 
